@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const API_KEY = 'YOUR_API_KEY'; 
+const API_KEY = '49342840-003e2c292237fbf09de0074d9';
 const BASE_URL = 'https://pixabay.com/api/';
 
-export async function fetchImages(query) {
+export async function getPictures(query) {
   try {
     const response = await axios.get(BASE_URL, {
       params: {
@@ -14,10 +14,8 @@ export async function fetchImages(query) {
         safesearch: true,
       },
     });
-    
-    return response.data.hits;
+    return response.data;
   } catch (error) {
-    console.error('Error fetching images:', error);
-    throw error;
+    throw new Error(error.response?.data?.message || 'Failed to fetch images');
   }
 }

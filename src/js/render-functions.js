@@ -1,47 +1,26 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
-const gallery = document.querySelector('.gallery');
-const loader = document.querySelector('.loader');
-let lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
-
-export function renderImages(images) {
-  const markup = images
+export const createMarkup = images => {
+  return images
     .map(
-      ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
-        <li class="gallery-item">
-          <a href="${largeImageURL}">
-            <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-          </a>
-          <div class="info">
-            <p><strong>Likes:</strong> ${likes}</p>
-            <p><strong>Views:</strong> ${views}</p>
-            <p><strong>Comments:</strong> ${comments}</p>
-            <p><strong>Downloads:</strong> ${downloads}</p>
-          </div>
-        </li>
-      `
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => `
+      <li class="gallery-item">
+        <a class="gallery-link" href="${largeImageURL}">
+          <img class="gallery-image" src="${webformatURL}" alt="${tags}" width="360" />
+        </a>
+        <div class="thumb-block">
+          <div class="block"><h2 class="title">Likes</h2><p class="amount">${likes}</p></div>
+          <div class="block"><h2 class="title">Views</h2><p class="amount">${views}</p></div>
+          <div class="block"><h2 class="title">Comments</h2><p class="amount">${comments}</p></div>
+          <div class="block"><h2 class="title">Downloads</h2><p class="amount">${downloads}</p></div>
+        </div>
+      </li>`
     )
     .join('');
-  
-  gallery.insertAdjacentHTML('beforeend', markup);
-  lightbox.refresh();
-}
-
-
-export function clearGallery() {
-  gallery.innerHTML = '';
-}
-
-
-export function showLoader() {
-  loader.classList.remove('hidden');
-}
-
-
-export function hideLoader() {
-  loader.classList.add('hidden');
-}
+};

@@ -2,29 +2,28 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Search</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
+  <title>Vanilla App Template</title>
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
-  <header>
-    <form class="form">
-      <label>
-        <input type="text" name="search-text" placeholder="Search images..." required>
-      </label>
-      <button type="submit">Search</button>
-    </form>
-  </header>
-
   <main>
-    <div class="loader hidden"></div>
-    <ul class="gallery"></ul>
+    <form class="form">
+      <label class="label">
+        <input class="input" type="text" name="search-text" placeholder="Search images..." required>
+      </label>
+      <button class="btn" type="submit">Search</button>
+    </form>
+    <div class="container">
+      <span class="loader"></span>
+      <ul class="gallery"></ul>
+    </div>
   </main>
-
-  <script type="module" src="main.js"></script>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>
-
