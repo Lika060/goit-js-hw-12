@@ -88,14 +88,13 @@ async function handleSearch(event) {
       toggleLoadMoreBtn(true);
     }
   } catch (error) {
-    console.error(error);
-    iziToast.error({
-      title: 'Error',
-      message: 'Something went wrong. Please try again later.',
-      position: 'topRight',
-    });
-    toggleLoader(false);
-  }
+  iziToast.error({
+    title: 'Error',
+    message: 'Something went wrong. Please try again later.',
+    position: 'topRight',
+  });
+  toggleLoader(false);
+}
 }
 
 async function handleLoadMore() {
