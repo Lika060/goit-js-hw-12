@@ -9,10 +9,6 @@ body {
   background: linear-gradient(to top, #d5b4e3, #b5838d);
   color: #333;
   padding: 0 150px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; */
 }
 
 .form {
