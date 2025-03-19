@@ -1,3 +1,9 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const gallery = document.querySelector('.gallery');
+let lightbox;
+
 export const createMarkup = images => {
   return images
     .map(
@@ -24,3 +30,28 @@ export const createMarkup = images => {
     )
     .join('');
 };
+
+export function renderGallery(images, append = false) {
+  const markup = createMarkup(images);
+
+  if (append) {
+    gallery.insertAdjacentHTML('beforeend', markup);
+    if (lightbox) lightbox.refresh();
+  } else {
+    gallery.innerHTML = markup;
+    if (lightbox) lightbox.destroy();
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    }); 
+  }
+}
+
+export function clearGallery() {
+  gallery.innerHTML = '';
+  if (lightbox) {
+    lightbox.destroy();
+    lightbox = null;
+  }
+}
+
